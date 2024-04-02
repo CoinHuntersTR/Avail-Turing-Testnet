@@ -43,4 +43,35 @@ screen -S avail
 ./avail-node --chain turing --name [name your node] --validator
 ```
 
+## Systemd ile kurulum
+
+```
+sudo tee /etc/systemd/system/availd.service > /dev/null <<'EOF'
+[Unit]
+Description=Avail Validator Node
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/avail/
+ExecStart=/root/avail/avail-node --chain turing --name VALIDATORNAME --validator
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Node başlatalım
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable availd.service
+sudo systemctl restart availd.service
+```
+```
+sudo systemctl status availd.service
+```
+
 
