@@ -89,5 +89,7 @@ sudo systemctl start availd.service
 ```
 sudo systemctl status availd.service
 ```
-
-
+### Log Kontrolü
+```
+journalctl -f -u availd.service
+```
