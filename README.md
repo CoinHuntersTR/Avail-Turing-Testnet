@@ -43,7 +43,7 @@ User=root
 Type=simple
 Restart=always
 RestartSec=120
-ExecStart=/root/avail/data-avail -d /root/avail/data --chain turing --validator --name "CoinHunters"
+ExecStart=/root/avail/avail-node -d /root/avail/avail-node --chain turing --validator --name "CoinHunters"
 [Install]
 WantedBy=multi-user.target
 EOF
