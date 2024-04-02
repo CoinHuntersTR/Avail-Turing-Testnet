@@ -32,33 +32,15 @@ tar -xf x86_64-ubuntu-2204-avail-node.tar.gz
 ## Sevis Oluşturuyoruz...
 
 ```
-sudo tee /etc/systemd/system/availd.service > /dev/null <<'EOF'
-[Unit]
-Description=Avail Validator
-After=network.target
-StartLimitIntervalSec=0
-
-[Service]
-User=root
-Type=simple
-Restart=always
-RestartSec=120
-ExecStart=/root/avail/avail-node -d /root/avail/avail-node --chain turing --validator --name "CoinHunters"
-[Install]
-WantedBy=multi-user.target
-EOF
+screen -S avail
 ```
+
 ## Node Başlatalım
 
-```
-sudo systemctl daemon-reload
-sudo systemctl enable availd.service
-sudo systemctl restart availd.service
-```
-## Loglara Bakalım
+> [name your node] yerine Validator ismini giriyoruz.
 
 ```
-journalctl -f -u availd.service
+./avail-node --chain turing --name [name your node] --validator
 ```
 
 
