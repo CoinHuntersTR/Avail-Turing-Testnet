@@ -68,7 +68,7 @@ WantedBy=multi-user.target
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable availd.service
-sudo systemctl restart availd.service
+sudo systemctl start availd.service
 ```
 ```
 sudo systemctl status availd.service
